@@ -58,32 +58,6 @@ Bounds.pointInPolygon = function (p, poly) {
     return insidePoly
   }
 
-Bounds.world = {
-  "type": "Polygon",
-  "coordinates": [
-    [
-      [
-        -180,
-        -90
-      ],
-      [
-        -180,
-        90
-      ],
-      [
-        180,
-        90
-      ],
-      [
-        180,
-        -90
-      ],
-      [
-        -180,
-        -90
-      ]
-    ]
-  ]
-}
+Bounds.world = {"type":"Polygon","coordinates":[[[-180,-90],[-180,90],[180,90],[180,-90],[-180,-90]]]}
 
 module.exports = Bounds
