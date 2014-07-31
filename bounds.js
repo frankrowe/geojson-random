@@ -15,8 +15,8 @@ Bounds.boundingBoxAroundPolyCoords = function(coords) {
 }
 
 Bounds.pointInBoundingBox = function (point, bounds) {
-    return !(point.coordinates[1] < bounds[0][0] || point.coordinates[1] > bounds[1][0] || point.coordinates[0] < bounds[0][1] || point.coordinates[0] > bounds[1][1]) 
-  }
+  return !(point.coordinates[1] < bounds[0][0] || point.coordinates[1] > bounds[1][0] || point.coordinates[0] < bounds[0][1] || point.coordinates[0] > bounds[1][1]) 
+}
 
 
 // Point in Polygon
@@ -42,21 +42,21 @@ Bounds.pnpoly = function(x,y,coords) {
 }
 
 Bounds.pointInPolygon = function (p, poly) {
-    var coords = (poly.type == "Polygon") ? [ poly.coordinates ] : poly.coordinates
+  var coords = (poly.type == "Polygon") ? [ poly.coordinates ] : poly.coordinates
 
-    var insideBox = false
-    for (var i = 0; i < coords.length; i++) {
-      if (Bounds.pointInBoundingBox(p, Bounds.boundingBoxAroundPolyCoords(coords[i]))) insideBox = true
-    }
-    if (!insideBox) return false
-
-    var insidePoly = false
-    for (var i = 0; i < coords.length; i++) {
-      if (Bounds.pnpoly(p.coordinates[1], p.coordinates[0], coords[i])) insidePoly = true
-    }
-
-    return insidePoly
+  var insideBox = false
+  for (var i = 0; i < coords.length; i++) {
+    if (Bounds.pointInBoundingBox(p, Bounds.boundingBoxAroundPolyCoords(coords[i]))) insideBox = true
   }
+  if (!insideBox) return false
+
+  var insidePoly = false
+  for (var i = 0; i < coords.length; i++) {
+    if (Bounds.pnpoly(p.coordinates[1], p.coordinates[0], coords[i])) insidePoly = true
+  }
+
+  return insidePoly
+}
 
 Bounds.world = {"type":"Polygon","coordinates":[[[-180,-90],[-180,90],[180,90],[180,-90],[-180,-90]]]}
 
