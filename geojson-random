@@ -2,6 +2,6 @@
 
 var count = (process.argv[2] && parseInt(process.argv[2], 10)) || 100;
 var type = process.argv[3] || 'point';
-var bounds = process.argv[4] || false
+var bounds = process.argv[4] ? JSON.parse(process.argv[4]) : false
 
 console.log(JSON.stringify(require('./')(count, type, bounds)));
