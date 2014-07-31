@@ -4,20 +4,16 @@ var Random = require('random-js'),
 
 var pseudo = false,
     random = Math.random,
-    polygon_bounds = Bounds.world,
+    polygon_bounds = {},
     bbox_bounds = []
 
 module.exports = function(count, type, _bounds) {
-    if (_bounds) {
-        polygon_bounds = _bounds
-    }
+    polygon_bounds = _bounds ? _bounds : Bounds.world
     bbox_bounds = Bounds.boundingBoxAroundPolyCoords(polygon_bounds.coordinates)
     switch (type) {
         case 'point':
             var features = [];
-            for (var i = 0; i < count; i++) {
-                features.push(feature(point()));
-            }
+            for (var i = 0; i < count; i++) { features.push(feature(point())); }
             return collection(features);
     }
 };
