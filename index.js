@@ -9,10 +9,9 @@ var pseudo = false,
 
 module.exports = function(count, type, _bounds) {
     if (_bounds) {
-        bbox_bounds = Bounds.boundingBoxAroundPolyCoords(_bounds.coordinates)
-    } else {
-        bbox_bounds = Bounds.boundingBoxAroundPolyCoords(polygon_bounds.coordinates)
+        polygon_bounds = _bounds
     }
+    bbox_bounds = Bounds.boundingBoxAroundPolyCoords(polygon_bounds.coordinates)
     switch (type) {
         case 'point':
             var features = [];
